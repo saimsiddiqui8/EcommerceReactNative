@@ -1,12 +1,15 @@
 import { Image, StyleSheet, View, Dimensions, TextInput, Text } from 'react-native'
 import React from 'react'
-import { logo } from '../images/ImagesPath'
+import { logo } from '../constant';
 import ThemeButton from '../reusable/ThemeButton';
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
 const SignUp = () => {
+    const handleSignUp = () => {
+        console.log("Sign Up");
+    }
     return (
         <View style={styles.containerOne}>
             <View style={styles.logoContainer}>
@@ -24,7 +27,7 @@ const SignUp = () => {
                 </View>
             </View>
             <View style={styles.signUpBtnContainer}>
-                <ThemeButton text="Sign Up" />
+                <ThemeButton text="Sign Up" click={handleSignUp}/>
             </View>
 
             <View style={styles.haveAaccountContainer}>
