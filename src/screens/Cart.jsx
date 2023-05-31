@@ -1,5 +1,5 @@
 import Header from '../components/Header';
-import { useNavigation } from "@react-navigation/native";
+import {useNavigation} from '@react-navigation/native';
 import {
   View,
   Text,
@@ -8,13 +8,13 @@ import {
   Image,
   FlatList,
 } from 'react-native';
-import { sliderImageTwo } from '../constant';
+import {sliderImageTwo} from '../constant';
 import ThemeButton from '../reusable/ThemeButton';
 const Cart = () => {
   const navigation = useNavigation();
   const navigateToCheckout = () => {
-    navigation.navigate("Checkout");
-  }
+    navigation.navigate('Checkout');
+  };
   const PRODUCTS = [
     {
       id: 1,
@@ -53,7 +53,7 @@ const Cart = () => {
       <View style={Styles.container}>
         <FlatList
           data={PRODUCTS}
-          renderItem={({ item }) => (
+          renderItem={({item}) => (
             <View style={Styles.CartItem}>
               <View style={Styles.imageCOntainer}>
                 <Image
@@ -123,6 +123,7 @@ const Styles = StyleSheet.create({
     alignItems: 'center',
     borderColor: '#F1F1F1',
     borderBottomWidth: 2,
+    borderRadius: 5,
     width: '100%',
   },
   tinyLogo: {
@@ -149,25 +150,27 @@ const Styles = StyleSheet.create({
     width: 20,
     position: 'absolute',
     top: -21,
-    right: 6,
+    right: -2,
   },
   twoIcons: {
     marginTop: 4,
     flexDirection: 'row',
-    justifyContent: 'space-around',
+    justifyContent: 'space-between',
     borderWidth: 2,
+    borderRadius: 10,
     paddingHorizontal: 10,
   },
   Icons: {
     justifyContent: 'center',
+    width: '30%',
   },
   minus: {
-    height: 20,
-    width: 20,
+    height: 22,
+    width: 22,
   },
   plus: {
-    height: 20,
-    width: 20,
+    height: 22,
+    width: 22,
   },
   bottomCart: {
     height: '10%',
@@ -175,7 +178,7 @@ const Styles = StyleSheet.create({
     alignItems: 'center',
     paddingHorizontal: 5,
   },
-  bottomCartLeft: { width: '40%' },
+  bottomCartLeft: {width: '40%'},
   bottomCartRight: {
     width: '60%',
     alignItems: 'center',
