@@ -1,17 +1,20 @@
-import { View, Text, StyleSheet, Image, Dimensions } from 'react-native';
+import {View, Text, StyleSheet, Image, Dimensions} from 'react-native';
 import Header from '../components/Header';
 import DropDownPicker from 'react-native-dropdown-picker';
-import { useState } from 'react';
+import Swiper from 'react-native-swiper';
+import {sliderImageOne, sliderImageThree} from '../constant';
+import sliderImageTwo from '../constant/images/sliderImageTwo.jpg';
+import {useState} from 'react';
 import ThemeButton from '../reusable/ThemeButton';
-const SingleProduct = ({ navigation }) => {
-  const { height, width } = Dimensions.get('window');
+const SingleProduct = ({navigation, route}) => {
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState(null);
   const [items, setItems] = useState([
-    { label: 'Apple', value: 'apple' },
-    { label: 'Banana', value: 'banana' },
+    {label: 'Apple', value: 'apple'},
+    {label: 'Banana', value: 'banana'},
   ]);
 
+  const {name, price} = route.params;
   return (
     <>
       <Header
@@ -20,29 +23,17 @@ const SingleProduct = ({ navigation }) => {
         navigation={navigation}
       />
       <View style={styles.container}>
-        <View style={styles.imageContainer}>
-          <Image
-            source={require('../constant/images/ProductTwo.png')}
-            style={{
-              width: '100%',
-              height: '100%',
-              backgroundColor: '#DDD5D5',
-              resizeMode: 'contain',
-              borderTopLeftRadius: 20,
-              borderTopRightRadius: 20,
-            }}
-          />
-          <View style={styles.favIconFill}>
-            <Image
-              source={require('../constant/images/favfill.png')}
-              style={styles.favIconFillImage}
-            />
-          </View>
+        <View style={styles.slider}>
+          <Swiper style={styles.wrapper} showsButtons={false} autoplay={false}>
+            <Image source={sliderImageOne} style={styles.sliderImage} />
+            <Image source={sliderImageTwo} style={styles.sliderImage} />
+            <Image source={sliderImageThree} style={styles.sliderImage} />
+          </Swiper>
         </View>
 
         <View style={styles.productDetailsContainer}>
-          <Text style={styles.pName}>Nike Air Force Watch D1</Text>
-          <Text style={styles.pPrice}>$199.00</Text>
+          <Text style={styles.pName}>{name}</Text>
+          <Text style={styles.pPrice}>{price}</Text>
         </View>
 
         <View style={styles.pDetailsContainer}>
@@ -66,9 +57,7 @@ const SingleProduct = ({ navigation }) => {
             setItems={setItems}
             containerStyle={{
               marginTop: 8,
-              width: "45%"
-
-
+              width: '55%',
             }}
           />
         </View>
@@ -85,7 +74,7 @@ export default SingleProduct;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginBottom: 15
+    marginBottom: 15,
   },
   imageContainer: {
     height: '30%',
@@ -108,8 +97,7 @@ const styles = StyleSheet.create({
     fontSize: 19,
     fontWeight: 600,
     lineHeight: 21.78,
-    color: "black",
-
+    color: 'black',
   },
   pPrice: {
     fontSize: 18,
@@ -124,8 +112,7 @@ const styles = StyleSheet.create({
   pDetailsName: {
     fontWeight: 500,
     fontSize: 16,
-    color: "black",
-
+    color: 'black',
   },
   pDetailsDescription: {
     marginTop: 10,
@@ -145,7 +132,7 @@ const styles = StyleSheet.create({
   },
   btnDiv: {
     flex: 1,
-    justifyContent: "flex-end",
+    justifyContent: 'flex-end',
   },
   favIconFill: {
     position: 'absolute',
@@ -155,5 +142,18 @@ const styles = StyleSheet.create({
   favIconFillImage: {
     height: 30,
     width: 30,
+  },
+  slider: {
+    width: '100%',
+    height: '30%',
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
+    borderWidth: 2,
+  },
+  sliderImage: {
+    width: '100%',
+    objectFit: 'cover',
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
   },
 });

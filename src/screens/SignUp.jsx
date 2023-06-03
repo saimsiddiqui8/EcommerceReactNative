@@ -1,4 +1,4 @@
-import { Image, StyleSheet, View, Dimensions, TextInput, Text } from 'react-native'
+import { Image, StyleSheet, View, Dimensions, TextInput, Text, TouchableOpacity } from 'react-native'
 import React from 'react'
 import { logo } from '../constant';
 import ThemeButton from '../reusable/ThemeButton';
@@ -6,10 +6,15 @@ import ThemeButton from '../reusable/ThemeButton';
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
-const SignUp = () => {
+const SignUp = ({navigation}) => {
     const handleSignUp = () => {
         console.log("Sign Up");
+        
     }
+
+    const backToLogin = ()=>{
+        navigation.navigate('Login')
+    } 
     return (
         <View style={styles.containerOne}>
             <View style={styles.logoContainer}>
@@ -31,7 +36,11 @@ const SignUp = () => {
             </View>
 
             <View style={styles.haveAaccountContainer}>
-                <Text style={styles.haveAaccount}>Already have an account? <Text style={[{fontWeight: 700, color: "#000" }]}>Log In</Text></Text>
+           
+                <Text style={styles.haveAaccount}>Already have an account?</Text>
+                <TouchableOpacity onPress={backToLogin}>
+                <Text style={[{fontWeight: 700, color: "#000" }]}>Log In</Text>
+                </TouchableOpacity>
             </View>
 
         </View>
@@ -105,5 +114,6 @@ const styles = StyleSheet.create({
     },
     haveAaccountContainer: {
         marginTop: 65,
+        flexDirection:'row'
     }
 });

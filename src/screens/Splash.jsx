@@ -1,53 +1,42 @@
-import { Image, StyleSheet, Text, TouchableOpacity, View, Dimensions } from 'react-native'
-import React from 'react'
-import { logo } from '../images/ImagesPath'
-import ThemeButton from '../reusable/ThemeButton';
-import ThemeButtonLight from '../reusable/ThemeButtonLight';
-
-const windowHeight = Dimensions.get('window').height;
+import React, { useEffect } from 'react';
+import { View, Image, StyleSheet } from 'react-native';
+import { logo } from '../constant';
+import { useNavigation } from '@react-navigation/native';
 
 const Splash = () => {
-    return (
-        <View>
-            <View>
-                <View style={[styles.containerOne, {marginTop: windowHeight * 0.35}]}>
-                    <Image
-                        style={styles.tinyLogo}
-                        source={logo}
-                    />
-                </View>
-            </View>
-            <View style={styles.containerTwo}>
-                <ThemeButton text="Log In"/>
-            </View>
-            <View style={styles.containerThree}>
-                <ThemeButtonLight text="Register"/>
-            </View>
-        </View>
-    )
-}
+    
+    const navigation = useNavigation();
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      // Navigate to the main screen or perform any other action
+      navigation.navigate('Starter');
+      
+    }, 2500);
 
-export default Splash;
+    return () => clearTimeout(timeout); // Clean up the timeout on unmount
+  }, []);
+
+  return (
+    <View style={styles.container}>
+      <Image
+        source={logo}
+        style={styles.image}
+        resizeMode="contain"
+      />
+    </View>
+  );
+};
 
 const styles = StyleSheet.create({
-    containerOne: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-    containerTwo: {
-        marginTop: 120,
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-    containerThree: {
-        marginTop: 80,
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-    tinyLogo: {
-        alignSelf: 'center',
-    }
-})
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  image: {
+    width: '50%',
+    height: '50%',
+  },
+});
+
+export default Splash;

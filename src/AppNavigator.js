@@ -8,14 +8,20 @@ import SingleProduct from "./screens/SingleProduct";
 import Main from "./screens/Main";
 import Checkout from "./screens/Checkout";
 import Completed from "./screens/Completed";
+import LogIn from "./screens/LogIn";
+import SignUp from "./screens/SignUp";
+import Starter from "./screens/Starter";
+import Splash from "./screens/Splash";
 
 const AppNavigator = () => {
   const Stack = createNativeStackNavigator();
   return (
     <NavigationContainer >
       <Stack.Navigator >
-       {/* <Stack.Screen name='Login' component={LogIn} options={{ headerShown: false }} /> */}
-       {/* <Stack.Screen name='Signup' component={SignUp} options={{ headerShown: false }} /> */}
+        <Stack.Screen name='Splash' component={Splash} options={{ headerShown: false }} />
+        <Stack.Screen name='Starter' component={Starter} options={{ headerShown: false }} />
+        <Stack.Screen name='Login' component={LogIn} options={{ headerShown: false }} />
+        <Stack.Screen name='Signup' component={SignUp} options={{ headerShown: false }} />
         <Stack.Screen name='Main' component={Main} options={{ headerShown: false }} />
         <Stack.Screen name="Home" component={Home} options={{ headerShown: false }} />
         <Stack.Screen name="Favourite" component={Favourite} options={{ headerShown: false }} />

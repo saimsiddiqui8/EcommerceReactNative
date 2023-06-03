@@ -2,9 +2,9 @@ import { Dimensions, StyleSheet, Text, TouchableOpacity } from 'react-native'
 import React from 'react'
 
 const windowWidth = Dimensions.get('window').width;
-const ThemeButtonLight = ({ text }) => {
+const ThemeButtonLight = ({ text, click }) => {
     return (
-        <TouchableOpacity style={[styles.button, { width: windowWidth * 0.85 }]}>
+        <TouchableOpacity onPress={click} style={[styles.button, { width: windowWidth * 0.85 }]}>
             <Text style={styles.buttonText}>{text}</Text>
         </TouchableOpacity>
     )
