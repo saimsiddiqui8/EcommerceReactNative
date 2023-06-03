@@ -1,18 +1,17 @@
 import {View, Text, Image, StyleSheet} from 'react-native';
-import { TouchableOpacity } from 'react-native';
+import {TouchableOpacity} from 'react-native';
 
-const ProductCard = ({navigation,name,price,image,id}) => {
+const ProductCard = ({navigation, name, price, img}) => {
   return (
-    <TouchableOpacity style={styles.ProductItem} onPress={()=>navigation.navigate('SingleProduct')}>
+    <TouchableOpacity
+      style={styles.ProductItem}
+      onPress={() => navigation.navigate('SingleProduct',{name,price,img})}>
       <Image
-        source={{
-          uri: 'https://www.nicepng.com/png/detail/249-2491858_cotton-ladies-suit-suit-with-ladies-png.png',
-        }}
+        source={{uri: 'https://www.nicepng.com/png/detail/15-154351_watches-png-image-watch-png-for-picsart.png'}}
         style={{
           width: '100%',
           height: '70%',
           backgroundColor: '#F4F6F8',
-          // resizeMode: 'contain',
           borderRadius: 16,
         }}
       />
@@ -33,7 +32,7 @@ export default ProductCard;
 const styles = StyleSheet.create({
   ProductItem: {
     height: 200,
-    width: '30%',
+    width: '47%',
     marginHorizontal: 5,
     marginBottom: 2,
   },
