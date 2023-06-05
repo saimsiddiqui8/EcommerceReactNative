@@ -1,13 +1,14 @@
-import {View, Text, Image, StyleSheet} from 'react-native';
-import {TouchableOpacity} from 'react-native';
+import { View, Text, Image, StyleSheet } from 'react-native';
+import { TouchableOpacity } from 'react-native';
+import { Watch1, favfill } from '../constant';
 
-const ProductCard = ({navigation, name, price, img}) => {
+const ProductCard = ({ navigation, name, price, img }) => {
   return (
     <TouchableOpacity
       style={styles.ProductItem}
-      onPress={() => navigation.navigate('SingleProduct',{name,price,img})}>
+      onPress={() => navigation.navigate('SingleProduct', { name, price, img })}>
       <Image
-        source={{uri: 'https://www.nicepng.com/png/detail/15-154351_watches-png-image-watch-png-for-picsart.png'}}
+        source={Watch1}
         style={{
           width: '100%',
           height: '70%',
@@ -17,7 +18,7 @@ const ProductCard = ({navigation, name, price, img}) => {
       />
       <View style={styles.favIconFill}>
         <Image
-          source={require('../constant/images/favfill.png')}
+          source={favfill}
           style={styles.favIconFillImage}
         />
       </View>

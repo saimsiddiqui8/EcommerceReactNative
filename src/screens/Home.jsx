@@ -6,6 +6,7 @@ import {
   Text,
   FlatList,
   TouchableOpacity,
+  ScrollView,
 } from 'react-native';
 import Swiper from 'react-native-swiper';
 import {sliderImageOne, sliderImageThree} from '../constant';
@@ -16,6 +17,7 @@ import DATA from '../Data/DATA';
 
 const Home = ({navigation}) => {
   const [filterCategory, setFilterCategory] = useState([]);
+  const [products, SetProducts] = useState(DATA);
 
   const filterCategoryFUnc = () => {
     const key = 'Category';
@@ -24,21 +26,24 @@ const Home = ({navigation}) => {
   };
 
   // TODO
-// FILTERATION 
-// ADD TO CART
+  // FILTERATION
+  // ADD TO CART
 
-  const filterProductsByCategory = () => {
-
+  const filterProductsByCategory = category => {
+    console.log('category', category);
+    const newVal = DATA.filter(item => item.Category === category);
+    filterCategory === 'All' ? SetProducts(DATA) : SetProducts(newVal);
   };
 
   useEffect(() => {
     filterCategoryFUnc();
   }, []);
 
-  const [cat, setCat] = useState('Shoes');
+  const [cat, setCat] = useState('All');
   return (
     <>
       <Header title="Home" />
+      <ScrollView>
       <View style={styles.container}>
         <View style={styles.slider}>
           <Swiper style={styles.wrapper} showsButtons={false} autoplay={true}>
@@ -54,6 +59,21 @@ const Home = ({navigation}) => {
           </Swiper>
         </View>
         <View style={styles.categoriesSection}>
+          {/* <View style={cat === 'All' ? styles.activeCat : styles.catItem}>
+            <TouchableOpacity
+              onPress={() => {
+                setCat('All');
+                filterProductsByCategory('All');
+              }}>
+              <Text
+                style={
+                  cat === 'All' ? styles.catItemActiveText : styles.catItemText
+                }>
+                All
+              </Text>
+            </TouchableOpacity>
+          </View> */}
+
           <FlatList
             horizontal
             pagingEnabled={true}
@@ -61,23 +81,25 @@ const Home = ({navigation}) => {
             data={filterCategory}
             style={{width: '100%', height: '100%'}}
             renderItem={({item}) => (
-              <>
-                <View
-                  style={
-                    cat === item.Category ? styles.activeCat : styles.catItem
-                  }>
-                  <TouchableOpacity onPress={() => setCat(item.Category)}>
-                    <Text
-                      style={
-                        cat === item.Category
-                          ? styles.catItemActiveText
-                          : styles.catItemText
-                      }>
-                      {item.Category}
-                    </Text>
-                  </TouchableOpacity>
-                </View>
-              </>
+              <View
+                style={
+                  cat === item.Category ? styles.activeCat : styles.catItem
+                }>
+                <TouchableOpacity
+                  onPress={() => {
+                    setCat(item.Category);
+                    filterProductsByCategory(item.Category);
+                  }}>
+                  <Text
+                    style={
+                      cat === item.Category
+                        ? styles.catItemActiveText
+                        : styles.catItemText
+                    }>
+                    {item.Category}
+                  </Text>
+                </TouchableOpacity>
+              </View>
             )}
             keyExtractor={item => item.id}
           />
@@ -85,7 +107,7 @@ const Home = ({navigation}) => {
         <View style={styles.ProductContainer}>
           <FlatList
             numColumns={2}
-            data={DATA}
+            data={products}
             renderItem={({item}) => (
               <ProductCard {...item} navigation={navigation} />
             )}
@@ -93,6 +115,7 @@ const Home = ({navigation}) => {
           />
         </View>
       </View>
+      </ScrollView>
     </>
   );
 };
@@ -134,8 +157,8 @@ const styles = StyleSheet.create({
     opacity: 0.7,
   },
   categoriesSection: {
-    marginTop: 8,
-    height: '9%',
+    marginTop: 10,
+    height: '6.5%',
     width: '100%',
     justifyContent: 'space-around',
     alignItems: 'center',

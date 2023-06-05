@@ -1,25 +1,24 @@
-import {View, Text, StyleSheet, Image, Dimensions} from 'react-native';
+import { View, Text, StyleSheet, Image } from 'react-native';
 import Header from '../components/Header';
 import DropDownPicker from 'react-native-dropdown-picker';
 import Swiper from 'react-native-swiper';
-import {sliderImageOne, sliderImageThree} from '../constant';
-import sliderImageTwo from '../constant/images/sliderImageTwo.jpg';
-import {useState} from 'react';
+import { leftArrow, sliderImageOne, sliderImageThree, sliderImageTwo } from '../constant';
+import { useState } from 'react';
 import ThemeButton from '../reusable/ThemeButton';
-const SingleProduct = ({navigation, route}) => {
+const SingleProduct = ({ navigation, route }) => {
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState(null);
   const [items, setItems] = useState([
-    {label: 'Apple', value: 'apple'},
-    {label: 'Banana', value: 'banana'},
+    { label: 'Apple', value: 'apple' },
+    { label: 'Banana', value: 'banana' },
   ]);
 
-  const {name, price} = route.params;
+  const { name, price } = route.params;
   return (
     <>
       <Header
         title="Product Details"
-        icon={require('../constant/images/left-arrow.png')}
+        icon={leftArrow}
         navigation={navigation}
       />
       <View style={styles.container}>

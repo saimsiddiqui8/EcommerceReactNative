@@ -1,13 +1,15 @@
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Favourite from './Favourite';
 import Cart from './Cart';
 import Home from './Home';
-import {Image} from 'react-native';
+import { Image } from 'react-native';
+import { cartfill, favfill, homefill } from '../constant';
 
 const Main = () => {
   const Tab = createBottomTabNavigator();
 
   return (
+    
     <Tab.Navigator
       screenOptions={{
         headerShown: false,
@@ -18,10 +20,10 @@ const Main = () => {
         name="Home"
         component={Home}
         options={{
-          tabBarIcon: ({focused}) => {
+          tabBarIcon: ({ focused }) => {
             return (
               <Image
-                source={require('../constant/images/homefill.png')}
+                source={homefill}
                 style={{
                   height: 20,
                   width: 20,
@@ -32,15 +34,15 @@ const Main = () => {
           },
         }}
       />
-      
+
       <Tab.Screen
         name="Cart"
         component={Cart}
         options={{
-          tabBarIcon: ({focused}) => {
+          tabBarIcon: ({ focused }) => {
             return (
               <Image
-                source={require('../constant/images/cartfill.png')}
+                source={cartfill}
                 style={{
                   height: 20,
                   width: 20,
@@ -55,10 +57,10 @@ const Main = () => {
         name="Favourite"
         component={Favourite}
         options={{
-          tabBarIcon: ({focused}) => {
+          tabBarIcon: ({ focused }) => {
             return (
               <Image
-                source={require('../constant/images/favfill.png')}
+                source={favfill}
                 style={{
                   height: 20,
                   width: 20,

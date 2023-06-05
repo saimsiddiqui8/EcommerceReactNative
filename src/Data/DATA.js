@@ -1,8 +1,8 @@
-import Watch1 from '../constant';
-import Watch2 from '../constant';
-import Watch3 from '../constant';
-import Shoes1 from '../constant';
-import Bag1 from '../constant'
+import {Watch1} from '../constant';
+import {Watch2} from '../constant';
+import { Watch3 } from '../constant';
+import {Shoes1} from '../constant';
+import {Bag1} from '../constant'
 
 const DATA = [
     {
@@ -46,6 +46,20 @@ const DATA = [
         price: '16,400',
         img: Bag1,
         Category: "Bags"
+    },
+    {
+        id: 7,
+        name: 'Blue Brushes',
+        price: '100',
+        img: Bag1,
+        Category: "Brushes"
+    },
+    {
+        id: 8,
+        name: 'Blue Glasses',
+        price: '6,480',
+        img: Bag1,
+        Category: "Glasses"
     },
 ]
 

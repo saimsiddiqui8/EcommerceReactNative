@@ -1,10 +1,10 @@
-import {Dimensions, Image, StyleSheet, Text, View} from 'react-native';
+import { Dimensions, Image, StyleSheet, Text, View } from 'react-native';
 import React from 'react';
-import {successIconOrdered} from '../constant';
+import { successIconOrdered } from '../constant';
 import ThemeButton from '../reusable/ThemeButton';
 import ThemeButtonLight from '../reusable/ThemeButtonLight';
 
-const Completed = ({navigation}) => {
+const Completed = ({ navigation }) => {
   const windowHeight = Dimensions.get('window').height;
   const navigateToBackToHome = () => {
     navigation.navigate('Home');
@@ -13,7 +13,7 @@ const Completed = ({navigation}) => {
     navigation.navigate('Login');
   };
   return (
-    <View style={[styles.containerOne, {height: windowHeight * 0.9}]}>
+    <View style={[styles.containerOne, { height: windowHeight * 0.9 }]}>
       <View>
         <Image style={styles.successIconOrdered} source={successIconOrdered} />
       </View>

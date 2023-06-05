@@ -3,6 +3,7 @@ import { StyleSheet, Text, TextInput, View } from 'react-native';
 import ThemeButton from '../reusable/ThemeButton';
 import { useNavigation } from "@react-navigation/native";
 import Header from '../components/Header';
+import { leftArrow } from '../constant';
 
 const Checkout = () => {
   const navigation = useNavigation();
@@ -13,7 +14,7 @@ const Checkout = () => {
     <>
       <Header
         title="Check Out"
-        icon={require('../constant/images/left-arrow.png')}
+        icon={leftArrow}
         navigation={navigation}
       />
 

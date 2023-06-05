@@ -1,5 +1,5 @@
 import Header from '../components/Header';
-import {useNavigation} from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 import {
   View,
   Text,
@@ -8,42 +8,71 @@ import {
   Image,
   FlatList,
 } from 'react-native';
-import {sliderImageTwo} from '../constant';
+import { minusSmall, plusSmall, sliderImageTwo, trash } from '../constant';
 import ThemeButton from '../reusable/ThemeButton';
+import { useState } from 'react';
 const Cart = () => {
   const navigation = useNavigation();
   const navigateToCheckout = () => {
     navigation.navigate('Checkout');
   };
+  // Use state to track the quantity of each item
+  const [quantities, setQuantities] = useState({});
+
+  const increaseQuantity = (itemId) => {
+    setQuantities(prevQuantities => ({
+      ...prevQuantities,
+      [itemId]: (prevQuantities[itemId] || 0) + 1,
+    }));
+  };
+
+  const decreaseQuantity = (itemId) => {
+    setQuantities(prevQuantities => ({
+      ...prevQuantities,
+      [itemId]: Math.max((prevQuantities[itemId] || 0) - 1, 0),
+    }));
+  };
+  const calculateItemPrice = (item) => {
+    const quantity = quantities[item.id] || 0;
+    return item.price * quantity;
+  };
+
+  const calculateTotalPrice = () => {
+    let totalPrice = 0;
+    PRODUCTS.forEach((item) => {
+      totalPrice += calculateItemPrice(item);
+    });
+    return totalPrice;
+  };
   const PRODUCTS = [
     {
       id: 1,
       name: 'Purani Watch',
-      price: '16,400',
+      price: 160,
       Image: sliderImageTwo,
     },
     {
       id: 2,
       name: 'orhani Watch',
-      price: '16,400',
+      price: 365,
       Image: sliderImageTwo,
     },
     {
       id: 3,
       name: 'orhani Watch',
-      price: '16,400',
+      price: 3000,
       Image: sliderImageTwo,
     },
     {
       id: 4,
       name: 'orhani Watch',
-      price: '16,400',
+      price: 15000,
       Image: sliderImageTwo,
     },
     {
       id: 5,
       name: 'orhani Watch',
-      price: '16,400',
+      price: 260,
       Image: sliderImageTwo,
     },
   ];
@@ -53,39 +82,37 @@ const Cart = () => {
       <View style={Styles.container}>
         <FlatList
           data={PRODUCTS}
-          renderItem={({item}) => (
+          renderItem={({ item }) => (
             <View style={Styles.CartItem}>
               <View style={Styles.imageCOntainer}>
                 <Image
                   style={Styles.tinyLogo}
-                  source={{
-                    uri: 'https://reactnative.dev/img/tiny_logo.png',
-                  }}
+                  source={item.Image}
                 />
               </View>
               <View style={Styles.productDetails}>
-                <Text style={Styles.productDetailsName}>iPhone 13 pro</Text>
-                <Text style={Styles.productDetailsPrice}>NGN 646,000</Text>
+                <Text style={Styles.productDetailsName}>{item.name}</Text>
+                <Text style={Styles.productDetailsPrice}>{calculateItemPrice(item)}</Text>
               </View>
               <View style={Styles.Icons}>
                 <TouchableOpacity>
                   <Image
                     style={Styles.trash}
-                    source={require('../constant/images/trash.png')}
+                    source={trash}
                   />
                 </TouchableOpacity>
                 <View style={Styles.twoIcons}>
-                  <TouchableOpacity>
+                  <TouchableOpacity  onPress={() => decreaseQuantity(item.id)}>
                     <Image
                       style={Styles.plus}
-                      source={require('../constant/images/minus-small.png')}
+                      source={minusSmall}
                     />
                   </TouchableOpacity>
-                  <Text>2</Text>
-                  <TouchableOpacity>
+                  <Text style={Styles.cartItems}>{quantities[item.id] || 0}</Text>
+                  <TouchableOpacity onPress={() => increaseQuantity(item.id)}>
                     <Image
                       style={Styles.minus}
-                      source={require('../constant/images/plus-small.png')}
+                      source={plusSmall}
                     />
                   </TouchableOpacity>
                 </View>
@@ -97,7 +124,7 @@ const Cart = () => {
         <View style={Styles.bottomCart}>
           <View style={Styles.bottomCartLeft}>
             <Text style={Styles.productDetailsName}>iPhone 13 pro</Text>
-            <Text style={Styles.productDetailsPrice}>NGN 646,000</Text>
+            <Text style={Styles.productDetailsPrice}>PKR {calculateTotalPrice()}</Text>
           </View>
           <View style={Styles.bottomCartRight}>
             <ThemeButton text="Check Out" w="100%" click={navigateToCheckout} />
@@ -144,6 +171,9 @@ const Styles = StyleSheet.create({
   productDetails: {
     flexDirection: 'column',
   },
+  cartItems: {
+    color: "#000",
+  },
 
   trash: {
     height: 20,
@@ -178,7 +208,7 @@ const Styles = StyleSheet.create({
     alignItems: 'center',
     paddingHorizontal: 5,
   },
-  bottomCartLeft: {width: '40%'},
+  bottomCartLeft: { width: '40%' },
   bottomCartRight: {
     width: '60%',
     alignItems: 'center',

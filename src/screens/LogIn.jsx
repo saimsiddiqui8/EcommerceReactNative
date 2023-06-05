@@ -55,6 +55,9 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
+    haveAaccount: {
+        color: "#000",
+    },
     inputContainer: {
         width: windowWidth * 0.9,
         height: 60,

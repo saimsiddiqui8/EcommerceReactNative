@@ -1,23 +1,17 @@
-import {useState} from 'react';
 import {
   View,
   StyleSheet,
-  Image,
-  Text,
   FlatList,
-  TouchableOpacity,
 } from 'react-native';
-// import {sliderImageOne, sliderImageTwo, sliderImageThree} from '../constant';
-import  sliderImageTwo  from '../constant/images/sliderImageTwo.jpg';
-
+import { sliderImageTwo } from '../constant';
 import ProductCard from '../components/ProductCard';
-
 import Header from '../components/Header';
-const Favourite = ({navigation}) => {
+
+const Favourite = ({ navigation }) => {
   const PRODUCTS = [
     {
       id: 1,
-      name: 'Purani Watch',
+      name: 'Purani Watche',
       price: '16,400',
       Image: sliderImageTwo,
     },
@@ -90,13 +84,13 @@ const Favourite = ({navigation}) => {
   ];
   return (
     <>
-      <Header title="Favourite" />
+      <Header title="Favourites" />
       <View style={styles.container}>
         <View style={styles.ProductContainer}>
           <FlatList
             numColumns={3}
             data={PRODUCTS}
-            renderItem={({item}) => (
+            renderItem={({ item }) => (
               <ProductCard {...item} navigation={navigation} />
             )}
             keyExtractor={item => item.id}
@@ -118,6 +112,6 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
     flexDirection: 'row',
     paddingHorizontal: 4,
-    marginTop:5
+    marginTop: 5
   },
 });

@@ -8,5 +8,13 @@ export const singleProduct = require('./images/singleProduct.png');
 export const Watch1 = require('./images/watch1.png');
 export const Watch2 = require('./images/Watch2.png');
 export const Watch3 = require('./images/Watch3.png');
-export const Shoes1 = require ('./images/Shoes 1.png');
+export const Shoes1 = require ('./images/Shoes1.png');
 export const Bag1 = require('./images/ProductFour.png');
+export const homefill = require('./images/homefill.png');
+export const cartfill = require('./images/cartfill.png');
+export const favfill = require('./images/favfill.png');
+export const trash = require('./images/trash.png');
+export const minusSmall = require('./images/minus-small.png');
+export const plusSmall = require('./images/plus-small.png');
+export const leftArrow = require('./images/left-arrow.png');
+
