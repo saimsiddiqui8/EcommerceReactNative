@@ -12,6 +12,8 @@ import LogIn from "./screens/LogIn";
 import SignUp from "./screens/SignUp";
 import Starter from "./screens/Starter";
 import Splash from "./screens/Splash";
+import AllProducts from "./screens/admin/AllProducts";
+import AddItem from "./screens/admin/AddItem";
 
 const AppNavigator = () => {
   const Stack = createNativeStackNavigator();
@@ -29,6 +31,9 @@ const AppNavigator = () => {
         <Stack.Screen name="Checkout" component={Checkout} options={{ headerShown: false }} />
         <Stack.Screen name="Completed" component={Completed} options={{ headerShown: false }} />
         <Stack.Screen name="SingleProduct" component={SingleProduct} options={{ headerShown: false }} />
+        {/* admin */}
+        <Stack.Screen name="AllProducts" component={AllProducts} options={{ headerShown: false }} />
+        <Stack.Screen name="AddItem" component={AddItem} options={{ headerShown: false }} />
       </Stack.Navigator>
 
     </NavigationContainer>

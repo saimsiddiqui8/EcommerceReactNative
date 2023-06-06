@@ -43,7 +43,6 @@ const Home = ({navigation}) => {
   return (
     <>
       <Header title="Home" />
-      <ScrollView>
       <View style={styles.container}>
         <View style={styles.slider}>
           <Swiper style={styles.wrapper} showsButtons={false} autoplay={true}>
@@ -79,7 +78,7 @@ const Home = ({navigation}) => {
             pagingEnabled={true}
             showsHorizontalScrollIndicator={false}
             data={filterCategory}
-            style={{width: '100%', height: '100%'}}
+            style={{width: '100%', height: '75%'}}
             renderItem={({item}) => (
               <View
                 style={
@@ -115,7 +114,6 @@ const Home = ({navigation}) => {
           />
         </View>
       </View>
-      </ScrollView>
     </>
   );
 };
@@ -157,8 +155,8 @@ const styles = StyleSheet.create({
     opacity: 0.7,
   },
   categoriesSection: {
-    marginTop: 10,
-    height: '6.5%',
+    // marginTop: 10,
+    height: '15%',
     width: '100%',
     justifyContent: 'space-around',
     alignItems: 'center',

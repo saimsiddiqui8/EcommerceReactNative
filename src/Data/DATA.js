@@ -14,9 +14,9 @@ const DATA = [
     },
     {
         id: 2,
-        name: 'orhani Watch',
+        name: 'orhani Watchs',
         price: '16,400',
-        img: Watch2,
+        img: Watch3,
         Category: "Watches"
     },
     {

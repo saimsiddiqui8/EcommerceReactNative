@@ -7,7 +7,7 @@ import ThemeButtonLight from '../reusable/ThemeButtonLight';
 const Completed = ({ navigation }) => {
   const windowHeight = Dimensions.get('window').height;
   const navigateToBackToHome = () => {
-    navigation.navigate('Home');
+    navigation.navigate('Main');
   };
   const navigateToSignOut = () => {
     navigation.navigate('Login');

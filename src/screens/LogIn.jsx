@@ -1,20 +1,28 @@
-import { Image, StyleSheet, View, Dimensions, TextInput, Text,TouchableOpacity } from 'react-native'
-import React from 'react'
+import { Image, StyleSheet, View, Dimensions, TextInput, Text, TouchableOpacity } from 'react-native'
+import React, { useState } from 'react'
 import { logo } from '../constant';
 import ThemeButton from '../reusable/ThemeButton';
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
-const LogIn = ({navigation}) => {
+const LogIn = ({ navigation }) => {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
     const handleLogin = () => {
-        console.log("Login");
-        navigation.navigate('Main')
+        if (email == "admin@gmail.com" && password == "admin123") {
+            navigation.navigate('AddItem');
+        } else {
+            navigation.navigate('Main');
+
+        }
     }
 
     const goToSignUp = () => {
         console.log("Login");
-        navigation.navigate('Signup')
+        navigation.navigate('Signup');
     }
+
     return (
         <View style={styles.containerOne}>
             <View style={styles.logoContainer}>
@@ -22,23 +30,32 @@ const LogIn = ({navigation}) => {
             </View>
             <View>
                 <View style={styles.inputContainer}>
-                    <TextInput style={styles.input} placeholder='Enter your name' placeholderTextColor="#000000" />
+                    <TextInput
+                        style={styles.input}
+                        placeholder='Enter your name'
+                        placeholderTextColor="#000000"
+                        onChangeText={text => setEmail(text)}
+                    />
                 </View>
                 <View style={styles.inputContainer3}>
-                    <TextInput secureTextEntry={true} style={styles.input3} placeholder='Enter password' placeholderTextColor="#000000" />
-                    
+                    <TextInput
+                        secureTextEntry={true}
+                        style={styles.input3}
+                        placeholder='Enter password'
+                        placeholderTextColor="#000000"
+                        onChangeText={text => setPassword(text)}
+                    />
                 </View>
             </View>
             <View style={styles.LogInBtnContainer}>
-                <ThemeButton text="Log In" click={handleLogin}/>
+                <ThemeButton text="Log In" click={handleLogin} />
             </View>
             <View style={styles.haveAaccountContainer}>
                 <Text style={styles.haveAaccount}>Don’t have an account?</Text>
-                <TouchableOpacity onPress={goToSignUp}>     
-              <Text style={[{ fontWeight: 700, color: "#000" }]}>Sign up</Text>
+                <TouchableOpacity onPress={goToSignUp}>
+                    <Text style={[{ fontWeight: 700, color: "#000" }]}>Sign up</Text>
                 </TouchableOpacity>
             </View>
-
         </View>
     )
 }
@@ -98,6 +115,6 @@ const styles = StyleSheet.create({
     },
     haveAaccountContainer: {
         marginTop: 65,
-        flexDirection:'row'
+        flexDirection: 'row'
     }
 });
