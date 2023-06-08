@@ -14,6 +14,8 @@ import Starter from "./screens/Starter";
 import Splash from "./screens/Splash";
 import AllProducts from "./screens/admin/AllProducts";
 import AddItem from "./screens/admin/AddItem";
+import Admin from "./screens/admin/Admin";
+import SingleProductEdit from "./screens/admin/SingleProductEdit";
 
 const AppNavigator = () => {
   const Stack = createNativeStackNavigator();
@@ -32,8 +34,10 @@ const AppNavigator = () => {
         <Stack.Screen name="Completed" component={Completed} options={{ headerShown: false }} />
         <Stack.Screen name="SingleProduct" component={SingleProduct} options={{ headerShown: false }} />
         {/* admin */}
+        <Stack.Screen name="Admin" component={Admin} options={{ headerShown: false }} />
         <Stack.Screen name="AllProducts" component={AllProducts} options={{ headerShown: false }} />
         <Stack.Screen name="AddItem" component={AddItem} options={{ headerShown: false }} />
+        <Stack.Screen name="SingleProductEdit" component={SingleProductEdit} options={{title : '', headerShown: false }} />
       </Stack.Navigator>
 
     </NavigationContainer>

@@ -11,7 +11,7 @@ const LogIn = ({ navigation }) => {
 
     const handleLogin = () => {
         if (email == "admin@gmail.com" && password == "admin123") {
-            navigation.navigate('AddItem');
+            navigation.navigate('Admin');
         } else {
             navigation.navigate('Main');
 

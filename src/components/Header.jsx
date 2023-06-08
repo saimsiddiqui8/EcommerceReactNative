@@ -1,10 +1,10 @@
-import {View, Text, StyleSheet, Image, TouchableOpacity} from 'react-native';
+import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 
-const Header = ({title, icon,navigation}) => {
+const Header = ({ title, icon, navigation }) => {
   return (
     <View style={styles.container}>
-      <TouchableOpacity onPress={()=>navigation.goBack()}>
-        <Image source={icon} style={{height: 21, width: 20, marginLeft: 10}} />
+      <TouchableOpacity onPress={() => navigation.goBack()}>
+        <Image source={icon} style={{ height: 21, width: 20, marginLeft: 10 }} />
       </TouchableOpacity>
       <Text
         style={{
@@ -13,9 +13,9 @@ const Header = ({title, icon,navigation}) => {
           textAlign: 'center',
           color: '#000000',
           marginRight: 30,
-          marginTop: 4,
+          marginTop: 2,
           fontWeight: '600',
-          fontSize: 22,
+          fontSize: 18,
         }}>
         {title}
       </Text>

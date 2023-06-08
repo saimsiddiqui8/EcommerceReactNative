@@ -4,13 +4,13 @@ import { logo } from '../constant';
 import { useNavigation } from '@react-navigation/native';
 
 const Splash = () => {
-    
-    const navigation = useNavigation();
+
+  const navigation = useNavigation();
   useEffect(() => {
     const timeout = setTimeout(() => {
       // Navigate to the main screen or perform any other action
       navigation.navigate('Starter');
-      
+
     }, 2500);
 
     return () => clearTimeout(timeout); // Clean up the timeout on unmount
@@ -32,6 +32,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: "#FFBB0E",
   },
   image: {
     width: '50%',
