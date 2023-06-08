@@ -6,7 +6,6 @@ import {
   Text,
   FlatList,
   TouchableOpacity,
-  ScrollView,
 } from 'react-native';
 import Swiper from 'react-native-swiper';
 import {sliderImageOne, sliderImageThree} from '../constant';
@@ -18,6 +17,7 @@ import DATA from '../Data/DATA';
 const Home = ({navigation}) => {
   const [filterCategory, setFilterCategory] = useState([]);
   const [products, SetProducts] = useState(DATA);
+  const [allProducts, SetAllProducts] = useState(DATA);
 
   const filterCategoryFUnc = () => {
     const key = 'Category';
@@ -58,20 +58,6 @@ const Home = ({navigation}) => {
           </Swiper>
         </View>
         <View style={styles.categoriesSection}>
-          {/* <View style={cat === 'All' ? styles.activeCat : styles.catItem}>
-            <TouchableOpacity
-              onPress={() => {
-                setCat('All');
-                filterProductsByCategory('All');
-              }}>
-              <Text
-                style={
-                  cat === 'All' ? styles.catItemActiveText : styles.catItemText
-                }>
-                All
-              </Text>
-            </TouchableOpacity>
-          </View> */}
 
           <FlatList
             horizontal
