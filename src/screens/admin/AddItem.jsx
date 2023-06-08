@@ -1,28 +1,47 @@
 import { Image, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
-import React from 'react'
+import { adminProfile, galleryIcon, leftArrow } from '../../constant'
+import React, { useState } from 'react'
 import ThemeButton from '../../reusable/ThemeButton'
 import { useNavigation } from "@react-navigation/native";
-import { adminProfile } from '../../constant'
+import { launchImageLibrary } from 'react-native-image-picker';
+import Header from '../../components/Header';
+
 
 const AddItem = () => {
     const navigation = useNavigation();
+    const [galleryphoto, setGalleryphoto] = useState();
     const handleAddItem = () => {
         navigation.navigate("AllProducts");
-        console.log("H");
+    }
+    let options = {
+        saveToPhotos: true,
+        mediaType: 'photo'
+    }
+    const openGallery = async () => {
+        const result = await launchImageLibrary(options);
+        setGalleryphoto(result.assets[0].uri)
+        console.log(galleryphoto);
     }
     return (
         <>
+            <Header
+                title="Add Items"
+                icon={leftArrow}
+                navigation={navigation} />
             <View>
-             
+
                 <View style={styles.container}>
                     {/* <View style={{ alignItems: 'center' }}>
                         <Text style={styles.addItemText}>Add New Item</Text>
                     </View> */}
-                    <View style={styles.hr} />
+                    {/* <View style={styles.hr} /> */}
                     <View>
-                        <View style={{ marginTop: 10 }}>
-                            <TextInput style={styles.input} fontSize={13} numberOfLines={4} placeholder="Image" placeholderTextColor="#000000" />
+                        <View style={styles.image}>
+                            <TouchableOpacity onPress={openGallery}>
+                                <Image source={galleryIcon}  />
+                            </TouchableOpacity>
                         </View>
+                        <Image source={{ uri: galleryphoto }} />
                         <View style={{ marginTop: 10 }}>
                             <TextInput style={styles.input} fontSize={13} placeholder="Item Name" placeholderTextColor="#000000" />
                         </View>
@@ -33,9 +52,9 @@ const AddItem = () => {
                             <TextInput style={styles.input} textAlignVertical="top" multiline={true} fontSize={13} numberOfLines={4} placeholder="Describe this item" placeholderTextColor="#000000" />
                         </View>
                         <View style={styles.cont}>
-                            <View style={{ justifyContent: "center", alignItems: "center" }}><Text style={{ fontSize: 15, marginRight: 15, marginTop: 5 }}>Unit Name:</Text></View>
+                            <View style={{ justifyContent: "center", alignItems: "center" }}><Text style={{ fontSize: 15, marginRight: 15, marginTop: 5 }}>Unit Size:</Text></View>
                             <View>
-                                <TextInput style={styles.input} fontSize={13} placeholder="Pcs / Kg / dozen" placeholderTextColor="#000000" />
+                                <TextInput style={styles.input} fontSize={13} placeholder="Inch / Ft. / meters" placeholderTextColor="#000000" />
                             </View>
                         </View>
                         <View style={styles.cont}>
@@ -48,7 +67,7 @@ const AddItem = () => {
                 </View>
             </View>
             <View style={styles.addProductBtn}>
-                <ThemeButton text="Add Product" click={handleAddItem}/>
+                <ThemeButton text="Add Product" />
             </View>
         </>
     )
@@ -59,7 +78,6 @@ export default AddItem
 const styles = StyleSheet.create({
     header: {
         backgroundColor: '#333',
-        paddingVertical: 16,
         paddingHorizontal: 20,
         borderBottomWidth: 1,
         borderBottomColor: '#999',
@@ -97,6 +115,17 @@ const styles = StyleSheet.create({
         width: '100%',
         marginTop: 10,
         backgroundColor: '#E5E8F2',
+        borderRadius: 5,
+        color: '#000000',
+        paddingHorizontal: 16,
+    },
+    image: {
+        width: '100%',
+        marginTop: 10,
+        paddingVertical: 25,
+        backgroundColor: '#E5E8F2',
+        justifyContent: 'center',
+        alignItems: 'center',
         borderRadius: 5,
         color: '#000000',
         paddingHorizontal: 16,

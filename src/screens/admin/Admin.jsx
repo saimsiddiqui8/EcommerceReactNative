@@ -1,15 +1,16 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from "@react-navigation/native";
 import { Image } from 'react-native';
-import { cartfill, homefill } from '../../constant';
+import { adminSettingIcon, cartfill, homefill, plusSign } from '../../constant';
 import AllProducts from './AllProducts';
 import AddItem from './AddItem';
+import AdminProfile from './AdminProfile';
 
 const Admin = () => {
     const Tab = createBottomTabNavigator();
 
     return (
-        <NavigationContainer >
+        <NavigationContainer>
             <Tab.Navigator
                 screenOptions={{
                     headerShown: false,
@@ -36,16 +37,34 @@ const Admin = () => {
                 />
 
                 <Tab.Screen
-                    name="Cart"
+                    name="Add Items"
                     component={AddItem}
                     options={{
                         tabBarIcon: ({ focused }) => {
                             return (
                                 <Image
-                                    source={cartfill}
+                                    source={plusSign}
                                     style={{
-                                        height: 20,
-                                        width: 20,
+                                        height: 25,
+                                        width: 25,
+                                        tintColor: focused ? 'orange' : 'black',
+                                    }}
+                                />
+                            );
+                        },
+                    }}
+                />
+                <Tab.Screen
+                    name="Profile"
+                    component={AdminProfile}
+                    options={{
+                        tabBarIcon: ({ focused }) => {
+                            return (
+                                <Image
+                                    source={adminSettingIcon}
+                                    style={{
+                                        height: 25,
+                                        width: 25,
                                         tintColor: focused ? 'orange' : 'black',
                                     }}
                                 />

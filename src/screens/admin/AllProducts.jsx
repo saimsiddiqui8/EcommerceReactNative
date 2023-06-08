@@ -1,108 +1,89 @@
 import React from 'react';
-import { Image, ScrollView, StyleSheet, Text, View } from 'react-native';
-import { singleProduct } from '../../constant';
-import { adminProfile } from '../../constant';
+import { Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { useNavigation } from "@react-navigation/native";
 import Header from '../../components/Header';
-
+import { singleProduct } from '../../constant';
 
 const AllProducts = () => {
-    return (
-        <ScrollView>
-            <View>
-                {/* <View style={styles.hr} /> */}
-                <View style={styles.container}>
-                    <View style={{ alignItems: 'center' }}>
-                        <Text style={styles.addItemText}>All Products</Text>
-                    </View>
+    const navigation = useNavigation();
+    const openProductToEdit = () => { 
+        // navigation.navigate('SingleProductEdit');
+    }
 
-                    {/* products */}
-                    <View style={styles.singleProductContainer}>
-                        <Image style={styles.singleProductImage} source={singleProduct} />
-                        <View style={styles.subHeadingText}>
-                            <Text style={{ color: "#FFBB0E", fontSize: 15, fontWeight: 600 }}>Apple</Text>
-                            <View>
-                                <Text style={{ fontSize: 15, fontWeight: 600, color: "#999999" }}>1. Kg</Text>
-                            </View>
-                        </View>
-                        <View style={styles.textPKR}>
-                            <Text style={{ fontSize: 15, fontWeight: 600, color: "#999999" }}>PKR 1000</Text>
-                        </View>
-                    </View>
-                    <View style={styles.singleProductContainer}>
-                        <Image style={styles.singleProductImage} source={singleProduct} />
-                        <View style={styles.subHeadingText}>
-                            <Text style={{ color: "#FFBB0E", fontSize: 15, fontWeight: 600 }}>Apple</Text>
-                            <View>
-                                <Text style={{ fontSize: 15, fontWeight: 600, color: "#999999" }}>1. Kg</Text>
-                            </View>
-                        </View>
-                        <View style={styles.textPKR}>
-                            <Text style={{ fontSize: 15, fontWeight: 600, color: "#999999" }}>PKR 1000</Text>
-                        </View>
-                    </View>
-                    <View style={styles.singleProductContainer}>
-                        <Image style={styles.singleProductImage} source={singleProduct} />
-                        <View style={styles.subHeadingText}>
-                            <Text style={{ color: "#FFBB0E", fontSize: 15, fontWeight: 600 }}>Apple</Text>
-                            <View>
-                                <Text style={{ fontSize: 15, fontWeight: 600, color: "#999999" }}>1. Kg</Text>
-                            </View>
-                        </View>
-                        <View style={styles.textPKR}>
-                            <Text style={{ fontSize: 15, fontWeight: 600, color: "#999999" }}>PKR 1000</Text>
-                        </View>
-                    </View>
-                    <View style={styles.singleProductContainer}>
-                        <Image style={styles.singleProductImage} source={singleProduct} />
-                        <View style={styles.subHeadingText}>
-                            <Text style={{ color: "#FFBB0E", fontSize: 15, fontWeight: 600 }}>Apple</Text>
-                            <View>
-                                <Text style={{ fontSize: 15, fontWeight: 600, color: "#999999" }}>1. Kg</Text>
-                            </View>
-                        </View>
-                        <View style={styles.textPKR}>
-                            <Text style={{ fontSize: 15, fontWeight: 600, color: "#999999" }}>PKR 1000</Text>
-                        </View>
-                    </View>
-                    <View style={styles.singleProductContainer}>
-                        <Image style={styles.singleProductImage} source={singleProduct} />
-                        <View style={styles.subHeadingText}>
-                            <Text style={{ color: "#FFBB0E", fontSize: 15, fontWeight: 600 }}>Apple</Text>
-                            <View>
-                                <Text style={{ fontSize: 15, fontWeight: 600, color: "#999999" }}>1. Kg</Text>
-                            </View>
-                        </View>
-                        <View style={styles.textPKR}>
-                            <Text style={{ fontSize: 15, fontWeight: 600, color: "#999999" }}>PKR 1000</Text>
-                        </View>
-                    </View>
-                    <View style={styles.singleProductContainer}>
-                        <Image style={styles.singleProductImage} source={singleProduct} />
-                        <View style={styles.subHeadingText}>
-                            <Text style={{ color: "#FFBB0E", fontSize: 15, fontWeight: 600 }}>Apple</Text>
-                            <View>
-                                <Text style={{ fontSize: 15, fontWeight: 600, color: "#999999" }}>1. Kg</Text>
-                            </View>
-                        </View>
-                        <View style={styles.textPKR}>
-                            <Text style={{ fontSize: 15, fontWeight: 600, color: "#999999" }}>PKR 1000</Text>
-                        </View>
-                    </View>
-                    <View style={styles.singleProductContainer}>
-                        <Image style={styles.singleProductImage} source={singleProduct} />
-                        <View style={styles.subHeadingText}>
-                            <Text style={{ color: "#FFBB0E", fontSize: 15, fontWeight: 600 }}>Apple</Text>
-                            <View>
-                                <Text style={{ fontSize: 15, fontWeight: 600, color: "#999999" }}>1. Kg</Text>
-                            </View>
-                        </View>
-                        <View style={styles.textPKR}>
-                            <Text style={{ fontSize: 15, fontWeight: 600, color: "#999999" }}>PKR 1000</Text>
-                        </View>
+    const products = [
+        {
+            id: 1,
+            name: 'Apple',
+            weight: '1 Kg',
+            price: 'PKR 1000',
+            image: singleProduct,
+        },
+        {
+            id: 2,
+            name: 'Mango',
+            weight: '4 Kg',
+            price: 'PKR 1870',
+            image: singleProduct,
+        },
+        {
+            id: 3,
+            name: 'Banana',
+            weight: '0.5 Kg',
+            price: 'PKR 100',
+            image: singleProduct,
+        },
+        {
+            id: 4,
+            name: 'Pineapple',
+            weight: '4 Kg',
+            price: 'PKR 4870',
+            image: singleProduct,
+        },
+        {
+            id: 5,
+            name: 'Grapes',
+            weight: '1 Kg',
+            price: 'PKR 320',
+            image: singleProduct,
+        },
+        {
+            id: 6,
+            name: 'Mango',
+            weight: '40 Kg',
+            price: 'PKR 15000',
+            image: singleProduct,
+        },
+    ];
+
+    return (
+        <>
+            <Header
+                title="All Products"
+                // icon={leftArrow}
+                navigation={navigation} />
+            <ScrollView>
+                <View>
+                    <View style={styles.container}>
+                        {products.map((product) => (
+                            <TouchableOpacity key={product.id} onPress={openProductToEdit}>
+                                <View style={styles.singleProductContainer}>
+                                    <Image style={styles.singleProductImage} source={product.image} />
+                                    <View style={styles.subHeadingText}>
+                                        <Text style={{ color: "#FFBB0E", fontSize: 15, fontWeight: 600 }}>{product.name}</Text>
+                                        <View>
+                                            <Text style={{ fontSize: 15, fontWeight: 600, color: "#999999" }}>{product.weight}</Text>
+                                        </View>
+                                    </View>
+                                    <View style={styles.textPKR}>
+                                        <Text style={{ fontSize: 15, fontWeight: 600, color: "#999999" }}>{product.price}</Text>
+                                    </View>
+                                </View>
+                            </TouchableOpacity>
+                        ))}
                     </View>
                 </View>
-            </View>
-        </ScrollView>
+            </ScrollView>
+        </>
     )
 }
 
@@ -111,38 +92,28 @@ export default AllProducts;
 const styles = StyleSheet.create({
     singleProductContainer: {
         marginTop: 20,
+        marginBottom: 10,
         borderWidth: 1,
         borderRadius: 15,
         borderColor: "#FFBB0E",
         flexDirection: "row",
         justifyContent: 'space-around',
     },
-    adminProfileImage: {
-        width: 60,
-        height: 60,
-        marginVertical: 5,
-    },
     container: {
         marginLeft: 13,
         marginRight: 13,
     },
-    hr: {
-        height: 3,
-        // marginTop: 70,
-        backgroundColor: '#D9D9D9'
-    },
-    addItemText: {
-        fontSize: 20,
-        fontWeight: 600,
+    singleProductImage: {
+        width: 60,
+        height: 60,
+        marginVertical: 5,
     },
     subHeadingText: {
         justifyContent: "center",
         alignItems: "center",
-        // marginLeft: 40,
     },
     textPKR: {
         justifyContent: "center",
         alignItems: "center",
-        // marginLeft: 40,
     },
-})
+});
