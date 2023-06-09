@@ -15,11 +15,13 @@ const AddItem = () => {
     }
     let options = {
         saveToPhotos: true,
-        mediaType: 'photo'
+        mediaType: 'photo',
+        quantity: 1,
     }
     const openGallery = async () => {
         const result = await launchImageLibrary(options);
-        setGalleryphoto(result.assets[0].uri)
+        let uri = result.assets[0].uri;
+        setGalleryphoto(uri)
         console.log(galleryphoto);
     }
     return (

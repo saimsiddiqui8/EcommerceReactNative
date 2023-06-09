@@ -1,15 +1,32 @@
-import React from 'react';
-import { Image, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import React, { useState } from 'react';
+import { Button, Image, Modal, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { useNavigation } from "@react-navigation/native";
 import Header from '../../components/Header';
-import { singleProduct } from '../../constant';
+import { crossIcon, singleProduct } from '../../constant';
+import ThemeButton from '../../reusable/ThemeButton';
 
 const AllProducts = () => {
     const navigation = useNavigation();
-    const openProductToEdit = () => { 
+    const openProductToEdit = () => {
         // navigation.navigate('SingleProductEdit');
     }
+    const [modalVisible, setModalVisible] = useState(false);
 
+    const openModal = () => {
+        setModalVisible(true);
+    };
+    const closeModal = () => {
+        setModalVisible(false);
+    };
+    const handleEdit = () => {
+        // Logic for handling edit action
+        closeModal();
+    };
+
+    const handleDelete = () => {
+        // Logic for handling delete action
+        closeModal();
+    };
     const products = [
         {
             id: 1,
@@ -53,29 +70,57 @@ const AllProducts = () => {
             price: 'PKR 15000',
             image: singleProduct,
         },
+        {
+            id: 7,
+            name: 'Mango',
+            weight: '40 Kg',
+            price: 'PKR 15000',
+            image: singleProduct,
+        },
+        {
+            id: 8,
+            name: 'Mango',
+            weight: '40 Kg',
+            price: 'PKR 15000',
+            image: singleProduct,
+        },
     ];
-
     return (
         <>
             <Header
                 title="All Products"
                 // icon={leftArrow}
                 navigation={navigation} />
+            <Modal visible={modalVisible} transparent>
+                <View style={styles.modalContainer}>
+                    <View style={styles.modalContent}>
+                        <TouchableOpacity style={styles.closeButton} onPress={closeModal}>
+                            <Image source={crossIcon} />
+                        </TouchableOpacity>
+
+                        <Text style={styles.messageText}>You want to edit your product?</Text>
+                        <View style={styles.buttonContainer}>
+                            <Button sty title="Edit" onPress={handleEdit} />
+                            <Button title="Delete" onPress={handleDelete} />
+                        </View>
+                    </View>
+                </View>
+            </Modal>
             <ScrollView>
                 <View>
                     <View style={styles.container}>
                         {products.map((product) => (
-                            <TouchableOpacity key={product.id} onPress={openProductToEdit}>
+                            <TouchableOpacity key={product.id} onPress={openModal}>
                                 <View style={styles.singleProductContainer}>
                                     <Image style={styles.singleProductImage} source={product.image} />
                                     <View style={styles.subHeadingText}>
                                         <Text style={{ color: "#FFBB0E", fontSize: 15, fontWeight: 600 }}>{product.name}</Text>
                                         <View>
-                                            <Text style={{ fontSize: 15, fontWeight: 600, color: "#999999" }}>{product.weight}</Text>
+                                            <Text style={{ fontSize: 13, fontWeight: 600, color: "#999999" }}>{product.weight}</Text>
                                         </View>
                                     </View>
                                     <View style={styles.textPKR}>
-                                        <Text style={{ fontSize: 15, fontWeight: 600, color: "#999999" }}>{product.price}</Text>
+                                        <Text style={{ fontSize: 13, fontWeight: 600, color: "#999999" }}>{product.price}</Text>
                                     </View>
                                 </View>
                             </TouchableOpacity>
@@ -83,6 +128,7 @@ const AllProducts = () => {
                     </View>
                 </View>
             </ScrollView>
+
         </>
     )
 }
@@ -90,6 +136,37 @@ const AllProducts = () => {
 export default AllProducts;
 
 const styles = StyleSheet.create({
+    modalContainer: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    },
+    modalContent: {
+        backgroundColor: '#fff',
+        width: 300,
+        padding: 20,
+        borderRadius: 8,
+    },
+    closeButton: {
+        position: 'absolute',
+        top: 15,
+        right: 15,
+        padding: 5,
+    },
+    closeButtonText: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        color: '#999',
+    },
+    messageText: {
+        fontSize: 20,
+        marginBottom: 20,
+    },
+    buttonContainer: {
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+    },
     singleProductContainer: {
         marginTop: 20,
         marginBottom: 10,

@@ -9,9 +9,14 @@ import { singleProduct } from '../../constant';
 
 const AdminProfile = () => {
     const navigation = useNavigation();
+    let options = {
+        saveToPhotos: true,
+        mediaType: 'photo'
+    }
     const openGallery = async () => {
         const result = await launchImageLibrary(options);
-        setGalleryphoto(result.assets[0].uri)
+        let uri = result.assets[0].uri;
+        setGalleryphoto(uri)
         console.log(galleryphoto);
     }
     const categories = [
@@ -54,7 +59,7 @@ const AdminProfile = () => {
             <ScrollView>
                 <View>
                     <View style={{ alignItems: "center" }}>
-                        <Image source={adminProfile} style={{ width: 125, height: 125, marginTop: 20 }} />
+                        <Image source={adminProfile} style={{ width: 100, height: 100, marginTop: 20 }} />
                         <View style={styles.container}>
                             <TextInput
                                 style={styles.input}
@@ -69,7 +74,7 @@ const AdminProfile = () => {
                     }}>
                         <View style={styles.image}>
                             <TouchableOpacity onPress={openGallery}>
-                                <Image source={galleryIcon} style={{ width: 60, height: 60 }} />
+                                <Image source={galleryIcon} style={{ width: 50, height: 50 }} />
                             </TouchableOpacity>
                         </View>
                         <View>
@@ -84,9 +89,9 @@ const AdminProfile = () => {
                         {/* singe category */}
                         {categories.map((category, index) => (
                             <View style={styles.singleCategoryContainer} key={index}>
-                                <Image source={category.image} style={{ width: 60, height: 60 }} />
+                                <Image source={category.image} style={{ width: 50, height: 50 }} />
                                 <View style={{ justifyContent: "center", marginLeft: 35 }}>
-                                    <Text style={{ fontSize: 18, fontWeight: "600" }}>{category.name}</Text>
+                                    <Text style={{ fontSize: 14, fontWeight: "600" }}>{category.name}</Text>
                                 </View>
                             </View>
                         ))}
@@ -121,8 +126,8 @@ const styles = StyleSheet.create({
     },
     input: {
         flex: 1,
-        fontSize: 18,
-        paddingVertical: 10,
+        fontSize: 14,
+        paddingVertical: 2,
         paddingHorizontal: 5,
         color: '#333',
     },
@@ -131,7 +136,7 @@ const styles = StyleSheet.create({
         marginBottom: 5,
     },
     inputField: {
-        fontSize: 16,
+        fontSize: 14,
         marginTop: 15,
         paddingHorizontal: 16,
         backgroundColor: '#E5E8F2',

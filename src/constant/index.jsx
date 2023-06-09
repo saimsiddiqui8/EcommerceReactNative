@@ -19,5 +19,6 @@ export const plusSmall = require('./images/plus-small.png');
 export const leftArrow = require('./images/left-arrow.png');
 export const tickIcon = require('./images/tickIcon.png');
 export const plusSign = require('./images/plusSign.png');
+export const crossIcon = require('./images/crossIcon.png');
 export const adminSettingIcon = require('./images/adminSettingIcon.png');
 export const galleryIcon = require('./images/galleryIcon.png');
